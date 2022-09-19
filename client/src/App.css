@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+.container {
+  border: 2px black solid;
+  margin: 10px;
+}
+
+.title {
+  border: 1px blue solid;
+  margin: 10px;
+}
+
+.body {
+  border: 1px red solid;
+  margin: 10px;
+}
+
+.footer {
+  border: 1px green solid;
+  margin: 10px;
+}
