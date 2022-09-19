@@ -22,7 +22,7 @@ If I missed anything let me know, you will get errors when trying to test the co
 ##########################################
 
 Running the project:
-If you are using vscode open a split terminal. cd into the server folder in one terminal and run "node index.js" to start the server, and in the other terminal cd into the client folder and run "npm start".
+If you are using vscode open a split terminal. cd into the server folder in one terminal and run "node index.js" to start the server, and in the other terminal cd into the client folder and run "npm start". Press "ctrl+c" in the terminals make it stop running.
 This starts the server and webpage.
 Both should be running for the project to function properly.
 When you make changes make sure to save the file and refresh the webpage to see changes.
