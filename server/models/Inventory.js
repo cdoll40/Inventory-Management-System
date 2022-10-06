@@ -1,31 +1,28 @@
 /*
-    Inventory.js creates a table in the db named Perishable
-    More tables can be created
-    module.exports exports the data to the db 
-    the objects such as productName, productDescription, productCount are the columns of the table
-
-    *** TODO:
-    *** INVENTORY WILL BE A TABLE THAT CONTAINS THE FOUR TYPES OF INVENTORY ITEMS,
-    *** THE FOUR TYPES OF ITEMS WILL BE SEPERATE TABLES ASSOCIATED WITH THE INVENTORY TABLE
+    
 */
 
 module.exports = (sequelize, DataTypes) => {
     
-    // Create table named Perishable
-    const Perishable = sequelize.define("Perishable", {
-        productName: {
-            type: DataTypes.STRING,
+   
+    const Inventory = sequelize.define("Inventory", {
+        perishable: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        productDescription: {
-            type: DataTypes.STRING,
+        frozen: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        productCount: {
+        produce: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        dried: {
             type: DataTypes.INTEGER,
             allowNull: false
         }
     })
 
-    return Perishable
+    return Inventory
 }
