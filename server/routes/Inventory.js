@@ -5,16 +5,16 @@
 
 const express = require("express");
 const router = express.Router();
-const { Perishable } = require("../models");
+const { Inventory } = require("../models");
 
 router.get("/", async (req, res) => {
-    const listOfTest = await Perishable.findAll()
+    const listOfTest = await Inventory.findAll()
     res.json(listOfTest)
 });
 
 router.post("/", async (req, res) => {
     const post = req.body
-    await Perishable.create(post)
+    await Inventory.create(post)
     res.json(post)
 });
 
