@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom'
 
-const pages = ['Update'];
+const pages = ['Update', 'Signin', 'Signup'];
 const settings = ['Logout'];
 
 const NavBar = () => {
