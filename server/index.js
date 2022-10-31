@@ -22,3 +22,6 @@ db.sequelize.sync().then(() => {    // When the server starts, checks if tables 
         console.log("Server running on port 3001")
     })
 })
+
+
+
