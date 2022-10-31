@@ -15,7 +15,8 @@ In server folder:
 - cors, express, mysql2, nodemon, sequelize, sequelize-cli
 
 In client folder:
-- axios, formik
+- axios, formik, @mui/material @emotion/react @emotion/styled
+
 
 If I missed anything let me know, you will get errors when trying to test the code without all the packages.
 
