@@ -11,10 +11,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import { Link } from 'react-router-dom'
 
-const pages = ['Update'];
+const pages = ['Signin', 'Signup'];
 const settings = ['Logout'];
 
 const NavBar = () => {
@@ -40,9 +40,9 @@ const NavBar = () => {
         <AppBar position="static">
         <Container maxWidth="xl">
             <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <InventoryIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
-                variant="h6"
+                variant="h5"
                 noWrap
                 component="a"
                 href="/"
@@ -51,12 +51,11 @@ const NavBar = () => {
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'monospace',
                 fontWeight: 700,
-                letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
                 }}
             >
-                LOGO
+                Inventory Management System
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -97,9 +96,9 @@ const NavBar = () => {
                 ))}
                 </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            <InventoryIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
-                variant="h5"
+                variant="h6"
                 noWrap
                 component="a"
                 href=""
@@ -109,12 +108,11 @@ const NavBar = () => {
                 flexGrow: 1,
                 fontFamily: 'monospace',
                 fontWeight: 700,
-                letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
                 }}
             >
-                LOGO
+                Inventory Management System
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
@@ -131,7 +129,7 @@ const NavBar = () => {
             <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="Manager" src="/static/images/avatar/2.jpg" />
                 </IconButton>
                 </Tooltip>
                 <Menu

@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 
 export default function MainTable() {
 
@@ -52,7 +53,7 @@ export default function MainTable() {
                     <TableCell align="right">{row.updatedAt}</TableCell>
                     <TableCell align="right">
                         <IconButton aria-label="edit">
-                            <EditIcon />
+                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>
                         </IconButton>
                     </TableCell>
                 </TableRow>
@@ -69,7 +70,7 @@ export default function MainTable() {
                     <TableCell align="right">{row.updatedAt}</TableCell>
                     <TableCell align="right">
                         <IconButton aria-label="edit">
-                                <EditIcon />
+                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>                                
                         </IconButton>
                     </TableCell>
                 </TableRow>
@@ -86,7 +87,7 @@ export default function MainTable() {
                     <TableCell align="right">{row.updatedAt}</TableCell>
                     <TableCell align="right">
                         <IconButton aria-label="edit">
-                            <EditIcon />
+                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>
                         </IconButton>
                     </TableCell>                
                 </TableRow>
@@ -103,7 +104,7 @@ export default function MainTable() {
                     <TableCell align="right">{row.updatedAt}</TableCell>
                     <TableCell align="right">
                         <IconButton aria-label="edit">
-                            <EditIcon />
+                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>
                         </IconButton>    
                     </TableCell>                
                 </TableRow>
