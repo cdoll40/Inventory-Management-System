@@ -14,7 +14,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
-import SplitButton from '../components/SplitButton';
+import ConfirmationDialog from '../components/ConfirmDialog';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -49,7 +49,7 @@ function Update() {
                         <Typography textAlign="left">Delete</Typography>
                         <TextField id="standard-basic" label={invObject.cat_name} variant="standard" />
                         {/* <Button variant="outlined" sx={{ml: 4}}>Update</Button> */}
-                        <SplitButton/>
+                        <ConfirmationDialog />
                     </Item>
                     <Item>
                         <Accordion>
