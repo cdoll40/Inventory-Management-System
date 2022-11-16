@@ -5,22 +5,33 @@
 module.exports = (sequelize, DataTypes) => {
     
    
+    // const Inventory = sequelize.define("Inventory", {
+    //     perishable: {
+    //         type: DataTypes.INTEGER,
+    //         allowNull: false
+    //     },
+    //     frozen: {
+    //         type: DataTypes.INTEGER,
+    //         allowNull: false
+    //     },
+    //     produce: {
+    //         type: DataTypes.INTEGER,
+    //         allowNull: false
+    //     },
+    //     dried: {
+    //         type: DataTypes.INTEGER,
+    //         allowNull: false
+    //     }
+    // })
+
     const Inventory = sequelize.define("Inventory", {
-        perishable: {
-            type: DataTypes.INTEGER,
+        cat_name: {
+            type: DataTypes.STRING,
             allowNull: false
         },
-        frozen: {
+        count: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        produce: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        dried: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false 
         }
     })
 

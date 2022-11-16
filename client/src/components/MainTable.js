@@ -1,6 +1,7 @@
 /*
-    Change database design so each category is a row
-    Update rows instead of adding new ones when making changes
+    Add param to update to link to specific category to update
+    Format "Updated" date
+    Change ID to better format (Ex. 10000, 20000)
 */
 import * as React from 'react';
 import Table from '@mui/material/Table';
@@ -14,102 +15,51 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 export default function MainTable() {
 
-    const [listOfInventory, setListOfInventory] = useState([])
+  const [listOfInventory, setListOfInventory] = useState([])
 
-    useEffect(() => {
-    axios.get("http://localhost:3001/inventory").then((response) => {
-        setListOfInventory(response.data)
-    })
-    }, [])
+  useEffect(() => {
+  axios.get("http://localhost:3001/inventory").then((response) => {
+      setListOfInventory(response.data)
+  })
+  }, [])
 
+  const navigate = useNavigate()
     
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Category</TableCell>
-            {/* <TableCell align="right"></TableCell> */}
+            <TableCell>ID</TableCell>
+            <TableCell align="right">Category</TableCell>
             <TableCell align="right">In Stock</TableCell>
             <TableCell align="right">Updated</TableCell>
             <TableCell align="right">Edit</TableCell>
           </TableRow>
         </TableHead>
-        {listOfInventory.map((row) => (
-            <TableBody>
+        <TableBody>
+            {listOfInventory.map((row) => (
                 <TableRow
-                key="Perishable"
+                key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                    <TableCell component="th" scope="row">
-                        Perishable
-                    </TableCell>
-                    {/* <TableCell align="right"></TableCell> */}
-                    <TableCell align="right">{row.perishable}</TableCell>
+                    <TableCell component="th" scope="row">{row.id}</TableCell>
+                    <TableCell align="right">{row.cat_name}</TableCell>
+                    <TableCell align="right">{row.count}</TableCell>
                     <TableCell align="right">{row.updatedAt}</TableCell>
                     <TableCell align="right">
-                        <IconButton aria-label="edit">
-                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>
+                        <IconButton aria-label="edit" onClick={() => {navigate(`/Update/${row.id}`)}}>
+                            <EditIcon />
                         </IconButton>
                     </TableCell>
                 </TableRow>
-
-                <TableRow
-                key="Frozen"
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                    <TableCell component="th" scope="row">
-                    Frozen
-                    </TableCell>
-                    {/* <TableCell align="right"></TableCell> */}
-                    <TableCell align="right">{row.frozen}</TableCell>
-                    <TableCell align="right">{row.updatedAt}</TableCell>
-                    <TableCell align="right">
-                        <IconButton aria-label="edit">
-                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>                                
-                        </IconButton>
-                    </TableCell>
-                </TableRow>
-
-                <TableRow
-                key="Produce"
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                    <TableCell component="th" scope="row">
-                    Produce
-                    </TableCell>
-                    {/* <TableCell align="right"></TableCell> */}
-                    <TableCell align="right">{row.produce}</TableCell>
-                    <TableCell align="right">{row.updatedAt}</TableCell>
-                    <TableCell align="right">
-                        <IconButton aria-label="edit">
-                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>
-                        </IconButton>
-                    </TableCell>                
-                </TableRow>
-
-                <TableRow
-                key="Dried"
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                    <TableCell component="th" scope="row">
-                    Dried
-                    </TableCell>
-                    {/* <TableCell align="right"></TableCell> */}
-                    <TableCell align="right">{row.dried}</TableCell>
-                    <TableCell align="right">{row.updatedAt}</TableCell>
-                    <TableCell align="right">
-                        <IconButton aria-label="edit">
-                            <Link style={{textDecoration: "none"}} to={`/Update`}><EditIcon /></Link>
-                        </IconButton>    
-                    </TableCell>                
-                </TableRow>
-            </TableBody>
-        ))}
+            ))}
+        </TableBody>
       </Table>
     </TableContainer>
   );

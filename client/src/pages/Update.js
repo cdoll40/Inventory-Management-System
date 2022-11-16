@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios";
-// import {Formik, Form, Field, ErrorMessage} from "formik"
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -14,6 +14,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
+import SplitButton from '../components/SplitButton';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -21,33 +22,34 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  }));
+}));
 
 function Update() {
 
-    const navigate = useNavigate()
+    const { id } = useParams()
 
-    const initialValues = {
-        perishable: 0,
-        frozen: 0,
-        produce: 0,
-        dried: 0,
-    }
+    const [invObject, setInvObject] = useState({})
 
-    const onSubmit = (data) => {
-        axios.post("http://localhost:3001/inventory", data).then((response) => {
-        console.log("Post inserted")
-        navigate("/Home")
+    useEffect(() => {
+        axios.get(`http://localhost:3001/inventory/byId/${id}`).then((response) => {
+           setInvObject(response.data)
         })
-    }
+    }, [])
 
     return (
         <div className="App">
             <Box sx={{ width: '100%', mt: 2}}>
                 <Stack spacing={2}>
                     <Item>
-                        <TextField id="standard-basic" label="Perishable" variant="standard" />
-                        <Button variant="outlined" sx={{ml: 4}}>Update</Button>
+                        <Typography textAlign="left">Add</Typography>
+                        <TextField id="standard-basic" label={invObject.cat_name} variant="standard" />
+                        <Button variant="contained" sx={{ml: 4}}>Update</Button>
+                    </Item>
+                    <Item>
+                        <Typography textAlign="left">Delete</Typography>
+                        <TextField id="standard-basic" label={invObject.cat_name} variant="standard" />
+                        {/* <Button variant="outlined" sx={{ml: 4}}>Update</Button> */}
+                        <SplitButton/>
                     </Item>
                     <Item>
                         <Accordion>
@@ -60,7 +62,7 @@ function Update() {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Typography>
-                                    Last Updated: 2022-10-06T20:59:19.000Z
+                                    Last Updated: {invObject.updatedAt}
                                 </Typography>
                                 <Typography>
                                     +5 Perishables
@@ -82,39 +84,6 @@ function Update() {
                     </Item> */}
                 </Stack>
             </Box>
-        {/* <Formik initialValues={initialValues} onSubmit={onSubmit}>
-            <Form className="formContainer">
-            <label>perishable: </label>
-            <Field
-                autoComplete="off"
-                id="inputCreateTest"
-                name="perishable"
-                placeholder="(perishable...)"
-            />
-            <label>frozen: </label>
-            <Field
-                autoComplete="off"
-                id="inputCreateTest"
-                name="frozen"
-                placeholder="(frozen...)"
-            />
-            <label>produce: </label>
-            <Field
-                autoComplete="off"
-                id="inputCreateTest"
-                name="produce"
-                placeholder="(produce...)"
-            />
-            <label>dried: </label>
-            <Field
-                autoComplete="off"
-                id="inputCreateTest"
-                name="dried"
-                placeholder="(dried...)"
-            />
-            <button type="submit">Create</button>
-            </Form>
-        </Formik> */}
         </div>
     );
 }
