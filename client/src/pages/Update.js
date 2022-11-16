@@ -1,3 +1,7 @@
+/*
+    Add functionality for add, delete, and history
+    Style page
+*/
 import React from 'react'
 import axios from "axios";
 import { useEffect, useState } from 'react'
@@ -41,12 +45,18 @@ function Update() {
             <Box sx={{ width: '100%', mt: 2}}>
                 <Stack spacing={2}>
                     <Item>
-                        <Typography textAlign="left">Add</Typography>
-                        <TextField id="standard-basic" label={invObject.cat_name} variant="standard" />
-                        <Button variant="contained" sx={{ml: 4}}>Update</Button>
+                        <Typography textAlign="left" sx={{ fontSize: '24px'}}>Add</Typography>
+                        <TextField id="standard-basic" label={invObject.cat_name} variant="standard" sx={{}} />
+                        <br />
+                        <Button
+                         variant="contained" 
+                         sx={{ ml: 'auto', mr: 'auto', mt: 2, width: '100%', maxWidth: 240 }}
+                        >
+                        Update
+                        </Button>
                     </Item>
                     <Item>
-                        <Typography textAlign="left">Delete</Typography>
+                        <Typography textAlign="left" sx={{ fontSize: '24px'}}>Delete</Typography>
                         <TextField id="standard-basic" label={invObject.cat_name} variant="standard" />
                         {/* <Button variant="outlined" sx={{ml: 4}}>Update</Button> */}
                         <ConfirmationDialog />
@@ -58,7 +68,7 @@ function Update() {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                             >
-                            <Typography>History</Typography>
+                            <Typography sx={{ fontSize: '24px'}}>History</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Typography>

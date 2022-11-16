@@ -104,9 +104,9 @@ export default function ConfirmationDialog() {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <Box /*sx={{ width: '100%', maxWidth: 360, marginLeft: 'auto', marginRight: 'auto' }}*/>
       <List component="div" role="group">
-        <ListItem
+        {/* <ListItem
           button
           divider
           aria-haspopup="true"
@@ -115,7 +115,14 @@ export default function ConfirmationDialog() {
           onClick={handleClickListItem}
         >
           <ListItemText primary="Justify Deletion" secondary={value} />
-        </ListItem>
+        </ListItem> */}
+        <Button
+          variant='contained'
+          onClick={handleClickListItem}
+          sx={{ ml: 'auto', mr: 'auto', mt: 1, width: '100%', maxWidth: 240 }}
+        >
+            Justify Deletion
+        </Button>
         <ConfirmationDialogRaw
           id="justify-menu"
           keepMounted
