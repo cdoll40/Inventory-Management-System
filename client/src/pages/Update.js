@@ -45,6 +45,12 @@ function Update() {
             <Box sx={{ width: '100%', mt: 2}}>
                 <Stack spacing={2}>
                     <Item>
+                        <Typography textAlign="left" sx={{ fontSize: '24px'}}>{invObject.cat_name} Current Info: </Typography>
+                        <Typography textAlign="left" sx={{ fontSize: '20px'}}>Category ID: {invObject.id}</Typography>
+                        <Typography textAlign="left" sx={{ fontSize: '20px'}}>Current stock: {invObject.count}</Typography>
+                        <Typography textAlign="left" sx={{ fontSize: '20px'}}>Last updated: {invObject.updatedAt}</Typography>
+                    </Item>
+                    <Item>
                         <Typography textAlign="left" sx={{ fontSize: '24px'}}>Add</Typography>
                         <TextField id="standard-basic" label={invObject.cat_name} variant="standard" sx={{}} />
                         <br />
