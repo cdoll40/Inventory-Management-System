@@ -15,7 +15,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import { Link } from 'react-router-dom'
 
 const pages = ['Signin', 'Signup'];
-const settings = ['Report', 'Logout'];
+const settings = ['Settings', 'Signout'];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -90,7 +90,7 @@ const NavBar = () => {
                 {pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                        <Link style={{textDecoration: "none", color: "white"}} to={`/${page}`}>{page}</Link>
+                        <Link style={{textDecoration: "none", color: "black"}} to={`/${page}`}>{page}</Link>
                     </Typography>
                     </MenuItem>
                 ))}
@@ -152,7 +152,9 @@ const NavBar = () => {
                 <Typography textAlign="center">Role</Typography>        {/* role based on current user */}
                 {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center">
+                        <Link style={{textDecoration: "none", color: "black"}} to={`/${setting}`}>{setting}</Link>
+                    </Typography>
                     </MenuItem>
                 ))}
                 </Menu>
