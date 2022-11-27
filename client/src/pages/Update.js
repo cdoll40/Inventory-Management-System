@@ -11,11 +11,11 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+// import Accordion from '@mui/material/Accordion';
+// import AccordionSummary from '@mui/material/AccordionSummary';
+// import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -44,9 +44,6 @@ const invDel = {
     delJustify: ""
 }
 
-const history = []
-history.length = 5
-
 function Update() {
 
     const { id } = useParams()
@@ -73,7 +70,7 @@ function Update() {
             const b = parseInt(invAdd.addCount)
             updatedInv.count = a + b
             setInvObject(updatedInv)
-            updateHistory()
+            updateHistoryAdd()
             updateDB()
         } else if (data.get('deleteCount') > 0){
             invDel.delCount = data.get('deleteCount') * -1
@@ -83,17 +80,29 @@ function Update() {
             const b = parseInt(invDel.delCount)
             updatedInv.count = a + b
             setInvObject(updatedInv)
-            updateHistory()
+            updateHistoryDel()
             updateDB()
         }
     };
 
-    const updateHistory = () => { 
-        if (invAdd.addCount > 0){
-            history.push(invAdd)
-        } else if (invDel.delCount > 0){
-            history.push(invDel)
-        }
+    const updateHistoryAdd = () => { 
+        axios.post("http://localhost:3001/history", {
+            cat_name: invObject.cat_name,
+            change: "Add",
+            amount: invAdd.addCount,
+            }).then((response) => {
+                console.log(response);
+        });
+    }
+    const updateHistoryDel = () => { 
+        axios.post("http://localhost:3001/history", {
+            cat_name: invObject.cat_name,
+            change: "Delete",
+            amount: invDel.delCount,
+            justify: invDel.delJustify,
+            }).then((response) => {
+                console.log(response);
+        });
     }
 
     const updateDB = () => {
@@ -141,7 +150,12 @@ function Update() {
                     <Item>
                         <Typography textAlign="left" sx={{ fontSize: '24px'}}>{invObject.cat_name} Current Info: </Typography>
                         <Typography textAlign="left" sx={{ fontSize: '20px'}}>Category ID: {invObject.id}</Typography>
-                        <Typography textAlign="left" sx={{ fontSize: '20px'}}>Current stock: {invObject.count}</Typography>
+                        <Typography
+                        textAlign="left" 
+                        sx={{ fontSize: '20px'}}
+                        >
+                            Current stock: {invObject.count}
+                        </Typography>
                         <Typography textAlign="left" sx={{ fontSize: '20px'}}>Last updated: {formatDate}</Typography>
                     </Item>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -217,28 +231,6 @@ function Update() {
                             </Popper>
                         </Item>
                     </Box>
-                    <Item>
-                        <Accordion>
-                            <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                            >
-                            <Typography sx={{ fontSize: '24px'}}>History</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                {history.map((hist) => (
-                                    <Typography>{hist}</Typography>
-                                ))}
-                                {/* <Typography>
-                                    Last Updated: {invObject.updatedAt}
-                                </Typography>
-                                <Typography>
-                                    +5 Perishables
-                                </Typography> */}
-                            </AccordionDetails>
-                        </Accordion>
-                    </Item>
                 </Stack>
             </Box>
         </div>
