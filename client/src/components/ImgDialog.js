@@ -21,8 +21,8 @@ export default function ImgDialog() {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open max-width dialog
+      <Button variant="contained" onClick={handleClickOpen}>
+        Click to open
       </Button>
       <Dialog
         fullWidth={true}
