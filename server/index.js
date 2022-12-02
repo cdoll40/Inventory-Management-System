@@ -40,6 +40,8 @@ const registerRouter = require('./routes/Register')
 app.use("/register", registerRouter)
 const historyRouter = require('./routes/History')
 app.use("/history", historyRouter)
+const imageRouter = require('./routes/Image')
+app.use("/upload", imageRouter)
 
 // Port server runs on
 // Different than the port react runs on (React runs on 3000)

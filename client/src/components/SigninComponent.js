@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
 
 //template from MUI - Kody B
@@ -19,6 +20,8 @@ import { useEffect, useState } from "react";
 const theme = createTheme();
 
 export default function SigninComp() {
+
+  const navigate = useNavigate()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +38,11 @@ export default function SigninComp() {
         setLoginStatus(response.data.message);
       } else {
         setLoginStatus(response.data[0].username);
+        if(response.data[0].role === 'manager'){
+          navigate('/Manager-Home')
+        } else if (response.data[0].role === 'associate'){
+          navigate('/Associate-Home')
+        }
       }
     });
   };
