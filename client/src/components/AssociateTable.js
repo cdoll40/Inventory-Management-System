@@ -10,8 +10,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -19,7 +17,6 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
 import { Box, Stack } from '@mui/system';
 import { styled } from '@mui/material/styles';
 
@@ -35,7 +32,7 @@ const Item = styled(Paper)(({ theme }) => ({
   borderBlockEndStyle: 'solid',
 }));
 
-export default function MainTable() {
+export default function AssociateTable() {
 
   const [listOfInventory, setListOfInventory] = useState([])
 
@@ -50,7 +47,6 @@ export default function MainTable() {
   })
   }, [])
 
-  const navigate = useNavigate()
     
   return (
     <div>
@@ -63,7 +59,6 @@ export default function MainTable() {
               <TableCell align="right">Category</TableCell>
               <TableCell align="right">In Stock</TableCell>
               <TableCell align="right">Updated</TableCell>
-              <TableCell align="right">Edit</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -76,11 +71,6 @@ export default function MainTable() {
                       <TableCell align="right">{row.cat_name}</TableCell>
                       <TableCell align="right">{row.count}</TableCell>
                       <TableCell align="right">{row.updatedAt}</TableCell>
-                      <TableCell align="right">
-                          <IconButton aria-label="edit" onClick={() => {navigate(`/Update/${row.id}`)}}>
-                              <EditIcon />
-                          </IconButton>
-                      </TableCell>
                   </TableRow>
               ))}
           </TableBody>

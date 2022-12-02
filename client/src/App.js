@@ -3,13 +3,15 @@
 */
 import './App.css';
 import * as React from 'react';
-import { Route, Routes } from 'react-router';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import NavBar from './components/NavBar'
-import Home from './pages/Home'
+import AssociateHome from './pages/Associate-Home'
+import ManagerHome from './pages/Manager-Home'
 import Update from './pages/Update'
 import SignIn from './pages/Signin';
 import SignUp from './pages/Signup';
 import Settings from './pages/Settings';
+import Upload from './pages/Upload';
 
 function App() {
 
@@ -19,11 +21,15 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path="/" exact element={<Home />} />  
-        <Route path="/Update/:id" exact element={<Update />} />
+        <Route path="/" exact element={ <Navigate to={'Signin'} /> } />
         <Route path="/Signin" exact element={<SignIn />} />
+        {/* <Route path="/Signin" exact element={<SignIn />} /> */}
+        <Route path="/Manager-Home" exact element={<ManagerHome />} />  
+        <Route path="/Associate-Home" exact element={<AssociateHome />} />
+        <Route path="/Update/:id" exact element={<Update />} />
         <Route path="/Signup" exact element={<SignUp />} />
         <Route path="/Settings" exact element={<Settings />} />
+        <Route path="/Upload" exact element={<Upload />} />
       </Routes>
     </div> 
   );

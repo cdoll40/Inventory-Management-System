@@ -14,8 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import { Link } from 'react-router-dom'
 
-const pages = ['Signin', 'Signup'];
-const settings = ['Settings', 'Signout'];
+// const pages = ['Signin', 'Signup'];
+const settings = ['Add User', 'Settings', 'Signout'];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -69,7 +69,7 @@ const NavBar = () => {
                 >
                 <MenuIcon />
                 </IconButton>
-                <Menu
+                {/* <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
                 anchorOrigin={{
@@ -94,7 +94,7 @@ const NavBar = () => {
                     </Typography>
                     </MenuItem>
                 ))}
-                </Menu>
+                </Menu> */}
             </Box>
             <InventoryIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
@@ -115,7 +115,7 @@ const NavBar = () => {
                 Inventory Management System
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                {pages.map((page) => (
+                {/* {pages.map((page) => (
                 <Button
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -123,13 +123,13 @@ const NavBar = () => {
                 >
                     <Link style={{textDecoration: "none", color: "white"}} to={`/${page}`}>{page}</Link>
                 </Button>
-                ))}
+                ))} */}
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Manager" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="S" src="/static/images/avatar/2.jpg" />
                 </IconButton>
                 </Tooltip>
                 <Menu
@@ -148,15 +148,31 @@ const NavBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
                 >
-                <Typography textAlign="center">User Name</Typography>   {/* name based on current user */}
-                <Typography textAlign="center">Role</Typography>        {/* role based on current user */}
-                {settings.map((setting) => (
+                    <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">
+                            <Link style={{textDecoration: "none", color: "black"}} to={'/SignUp'}>{settings[0]}</Link>
+                        </Typography>
+                    </MenuItem>
+                    <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">
+                            <Link style={{textDecoration: "none", color: "black"}} to={'Settings'}>{settings[1]}</Link>
+                        </Typography>
+                    </MenuItem>
+                    <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">
+                            <Link style={{textDecoration: "none", color: "black"}} to={'/SignIn'}>{settings[2]}</Link>
+                        </Typography>
+                    </MenuItem>
+                {/* <Typography textAlign="center">User Name</Typography>   {/* name based on current user 
+                <Typography textAlign="center">Role</Typography>        {/* role based on current user 
+                 */}
+                {/* {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">
                         <Link style={{textDecoration: "none", color: "black"}} to={`/${setting}`}>{setting}</Link>
                     </Typography>
                     </MenuItem>
-                ))}
+                ))} */}
                 </Menu>
             </Box>
             </Toolbar>

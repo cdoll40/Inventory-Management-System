@@ -1,12 +1,12 @@
 import React from 'react'
-import MainTable from '../components/MainTable';
+import AssociateTable from '../components/AssociateTable';
 
 function Home() {
 
   return (
     <div className="App">
       <div className="container">
-        <MainTable />
+        <AssociateTable />
       </div>
     </div>
   );

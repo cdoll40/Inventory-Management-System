@@ -14,4 +14,4 @@ router.post("/", async (req, res) => {
     History.create(history)
 });
 
-module.exports = router;
+module.exports = router; 

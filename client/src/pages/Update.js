@@ -54,7 +54,7 @@ function Update() {
         axios.get(`http://localhost:3001/inventory/byId/${id}`).then((response) => {
            setInvObject(response.data)
         })
-    }, [])
+    }, [id])
 
     const updatedInv = invObject
     let formatDate = new Date(updatedInv.updatedAt)
