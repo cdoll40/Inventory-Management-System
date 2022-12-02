@@ -118,7 +118,6 @@ export default function ManagerTable() {
           </Box>
         </AccordionDetails>
       </Accordion>
-      <ImgList />
     </div>
   );
 }
