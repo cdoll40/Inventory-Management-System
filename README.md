@@ -1,4 +1,5 @@
 Inventory Management System
+
 A full stack web application used to view and manage a store's inventory. Based on the role of the user logged into the system different permissions are granted. Store associates can only view the inventory while store managers can edit the inventory. Updates can be made to the inventory. Products can be added and deleted products must be justified.
 
 ##########################################
