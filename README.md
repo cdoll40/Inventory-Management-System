@@ -30,8 +30,10 @@ In client folder:
 ##########################################
 
 Running the project:
+
 If you are using vscode open a split terminal. Change directory ("cd") into the server folder in one terminal and run "node index.js" to start the server, and in the other terminal "cd" into the client folder and run "npm start". Press "ctrl+c" in the terminals make it stop running.
 This starts the server and webpage.
 Both should be running for the project to function properly.
+
 When you make changes to the client code make sure to save the file and refresh the webpage to see changes.
 When you make changes to the server code make sure to save the file and restart the node server to see changes.
