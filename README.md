@@ -1,39 +1,41 @@
-Inventory Management System
+# Inventory Management System
+This Inventory Management System is a web application developed as a group senior project. It is built using React.js, Material-UI, Node.js, Express, and MySQL. The system allows users to sign in with different roles, such as manager or associate. Managers have full control over the inventory, including the ability to add, delete, and edit items. Associates, on the other hand, have read-only access and can only view the inventory.
 
-A full stack web application used to view and manage a store's inventory. Based on the role of the user logged into the system different permissions are granted. Store associates can only view the inventory while store managers can edit the inventory. Updates can be made to the inventory. Products can be added and deleted products must be justified.
+## Features
+- User Authentication: The system provides a user authentication mechanism where users can sign in with their credentials. The authentication process ensures that only authorized users can access the system.
 
-##########################################
+- User Roles: The system supports two roles: manager and associate. Managers have additional privileges, such as adding, deleting, and editing items in the inventory, while associates have read-only access.
 
-How to setup the development environment:
+- Inventory Management: Managers can perform various operations on the inventory, including adding new items, deleting existing items, and editing item details. These actions help keep the inventory up to date.
 
-Getting Started:
+- Categories Table: The system includes a categories table that organizes items into different categories. This feature allows for efficient organization and categorization of inventory items.
 
-There are two main folders in the project (client and server) client is the frontend and server is the backend. To get started with this I used MySQL workbench as the database to test things. 
+- Products Table: The products table displays all the items in the inventory along with their details, such as name, description, quantity, and price. This table provides a comprehensive view of the inventory.
 
-Required installations:
+- Edit History Table: The edit history table keeps track of changes made to the inventory. It records details such as the user who made the change, the timestamp of the change, and the specific action performed.
 
-MySQL Workbench:
-Workbench needs to be installed and the MySQL workbench server must be running to interact with data in the database.
+- Printable View: The system includes a page that allows users to generate printable reports of the information from the categories table, products table, and edit history table. This feature facilitates the creation of physical copies for record-keeping purposes.
 
-Node.js:
-Link shows how to install. 
-https://nodejs.dev/en/download/
+## Installation
+To set up the Inventory Management System on your local machine, follow these steps:
 
-For the following, download in the specified folder. If you are using vscode use the terminal in vscode, cd into the folder, and install the packages using "npm install *insertpackagename*"
+Clone this repository or download the source code.
+Navigate to the project directory.
+Install the required dependencies for the frontend and backend by running the following command:
+shell
+Copy code
+npm install
+Configure the database connection in the backend. Update the MySQL database credentials in the configuration files to ensure proper connectivity.
 
-In server folder:
-- cors, express, mysql2, nodemon, sequelize, sequelize-cli, bcrypt, body-parser, cookie-parser
+Run the backend server using the following command:
 
-In client folder:
-- axios, @mui/material @emotion/react @emotion/styled
+Run "node index.js" in the backend directory to start the server.
+Then navigate to the frontend directory and start the React development server by running "npm run start"
+Access the application by visiting http://localhost:3000 in your web browser.
 
-##########################################
+## Usage
+Once the application is set up and running, users can access the system and sign in with their credentials. Depending on their role, they will have different permissions and access levels.
 
-Running the project:
+- Managers: Managers have full control over the inventory. They can add new items, delete existing items, and edit item details. Managers can also view the categories table, products table, edit history table, and generate printable reports.
 
-If you are using vscode open a split terminal. Change directory ("cd") into the server folder in one terminal and run "node index.js" to start the server, and in the other terminal "cd" into the client folder and run "npm start". Press "ctrl+c" in the terminals make it stop running.
-This starts the server and webpage.
-Both should be running for the project to function properly.
-
-When you make changes to the client code make sure to save the file and refresh the webpage to see changes.
-When you make changes to the server code make sure to save the file and restart the node server to see changes.
+- Associates: Associates have read-only access to the inventory. They can view the categories table, products table, edit history table, and generate printable reports. However, they cannot add, delete, or edit items.
